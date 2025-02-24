@@ -1,3 +1,31 @@
+# Jupyter AI for JijZept Agent
+
+This is the library forked from [Jupyter AI](https://github.com/jupyterlab/jupyter-ai) to make use of JijZept Agent.
+This repository is under **prototype** version.
+
+## Usage
+
+### Prerequisites
+* Python 3.11 or higher
+
+### Install
+* Run the following command
+```sh
+pyenv local 3.11
+python -m venv .venv
+source .venv/bin/activate
+cd packages/jijzept-ai-agent
+pip install -ve ".[dev]"
+```
+* Please make sure that the package [Client App for JijZept Agent](https://github.com/Jij-Inc/JijZept-Agent-Client-Side-App) is installed.
+* Run Jupyter
+```sh
+python -m jupyter lab
+```
+* Make sure the custom LLM provider and embeddings are installed.
+
+----------------------------------------------------------------
+
 # Jupyter AI
 
 **Jupyter AI is under incubation as part of the JupyterLab organization.**
