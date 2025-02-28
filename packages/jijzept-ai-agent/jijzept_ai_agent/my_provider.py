@@ -66,7 +66,7 @@ class MyEmbeddingsProvider(BaseEmbeddingsProvider, CustomLLMEmbbeding):
     models = ["my_model"]
 
     def __init__(self, **kwargs):
-        kwargs["server_url"] = "http://localhost:8000"
+        kwargs["server_url"] = "http://172.16.7.2:8000"
         super().__init__(size=300, **kwargs)
 
 
@@ -77,5 +77,5 @@ class MyCompletionProvider(BaseProvider, CustomLLMStreamingAsync):
     models = ["model_a"]
 
     def __init__(self, **kwargs):
-        kwargs["server_url"] = "http://localhost:8000"
+        kwargs["server_url"] = "http://172.16.7.2:8000"
         super().__init__(**kwargs)
