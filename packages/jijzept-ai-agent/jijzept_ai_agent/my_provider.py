@@ -9,6 +9,7 @@ from jupyter_ai import (
 )
 
 from asyncio import FIRST_COMPLETED, Task, create_task, wait, sleep
+import os
 from typing import AsyncIterable, AsyncIterator, Collection, TypeVar
 from jupyter_ai_magics import BaseEmbeddingsProvider
 from jijzept_agent_client.jijzept_agent import CustomLLMEmbbeding
@@ -66,7 +67,9 @@ class MyEmbeddingsProvider(BaseEmbeddingsProvider, CustomLLMEmbbeding):
     models = ["my_model"]
 
     def __init__(self, **kwargs):
-        kwargs["server_url"] = "http://localhost:8000"
+        # Get server URL from environment variable or use localhost as default
+        server_url = os.environ.get("JIJZEPT_SERVER_URL", "http://localhost:8000")
+        kwargs["server_url"] = server_url
         super().__init__(size=300, **kwargs)
 
 
@@ -77,5 +80,7 @@ class MyCompletionProvider(BaseProvider, CustomLLMStreamingAsync):
     models = ["model_a"]
 
     def __init__(self, **kwargs):
-        kwargs["server_url"] = "http://localhost:8000"
+        # Get server URL from environment variable or use localhost as default
+        server_url = os.environ.get("JIJZEPT_SERVER_URL", "http://localhost:8000")
+        kwargs["server_url"] = server_url
         super().__init__(**kwargs)
